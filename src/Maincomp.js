@@ -82,7 +82,7 @@ export default function MainComp() {
         if(index===0&&sticky==='true'){
           alert("cantdo")
          }else 
-       if(index+1<=length-1&&index!==0){
+       if(index+1<=length-1){
        let lowereleref=doc(database,'todo',outputmsg[index+1].id);
        let currenteleref=doc(database,'todo',outputmsg[index].id);
        
