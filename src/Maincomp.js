@@ -8,6 +8,7 @@ import {BsFillPinFill} from 'react-icons/bs'
 import React from 'react'
 
 export default function MainComp() {
+  const [sticky,setStiky]=useState('false');
   const [msg,setmsg]=useState([]);
   const [outputmsg,setOutputmsg]=useState([]);
   var db=collection(database,"todo");
@@ -56,7 +57,7 @@ export default function MainComp() {
       <div className='icons'><TiArrowSortedUp  size="25px" color='blue' onClick={
         //function for handling the upbutton cick
         function handleup(){
-       if(index-1===0){
+       if(index-1===0&&sticky==='true'){
         alert("cantdo")
        }else 
        if(index-1>=0){
@@ -78,7 +79,7 @@ export default function MainComp() {
         //function for handling down button click
         function handledown(){
         let length=outputmsg.length;
-        if(index===0){
+        if(index===0&&sticky==='true'){
           alert("cantdo")
          }else 
        if(index+1<=length-1&&index!==0){
@@ -107,7 +108,11 @@ export default function MainComp() {
       <BsFillPinFill onClick={()=>{
 
       //function for pin operation
-    
+      if(sticky==='false'){
+        setStiky('true')
+      } else {
+        setStiky('false')
+      }
         let topref=doc(database,'todo',outputmsg[0].id);
         let currentref=doc(database,'todo',outputmsg[index].id);
       updateDoc(topref,{
