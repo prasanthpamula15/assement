@@ -1,10 +1,12 @@
 
 import './App.css';
-import MainComp from './Maincomp';
+import ItemList from './ItemLIst';
+
+
 function App() {
   return (
     <div className="App">
-    <MainComp/>
+    <ItemList/>
     </div>
   );
 }

@@ -7,13 +7,12 @@ import {collection,addDoc,getDocs,deleteDoc,doc,updateDoc} from 'firebase/firest
 import {BsFillPinFill} from 'react-icons/bs'
 import React from 'react'
 
-export default function MainComp() {
+export default function ItemList() {
   const [sticky,setStiky]=useState('false');
-  const [msg,setmsg]=useState([]);
-  const [outputmsg,setOutputmsg]=useState([]);
+  const [outputmsg,setOutputmsg]=useState([]);//state array to store list of items
   var db=collection(database,"todo");
 
-
+//geting the data from backend in every render
   useEffect(()=>{
     getdata();
   })
@@ -34,17 +33,7 @@ export default function MainComp() {
   
   
  
-  const handlechange=(e)=>{
-  let input={msg:e.target.value}
-  setmsg({...msg,...input});
-  }
 
-
-  const handleclick=()=>{
-  addDoc(db,{
-    msg
-  })
-  }
 
   
   return (
@@ -132,8 +121,7 @@ export default function MainComp() {
      
        
         
-    <div className='inputf' onChange={(e)=>{handlechange(e)
-     }}><input type='text'></input><button onClick={(e)=>{handleclick(e)}}>Add</button></div>
+  
     
     </div>
   )
